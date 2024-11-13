@@ -14,51 +14,43 @@ Our attention mechanism is inspired by the concept of **potential energy wells**
 The **Gaussian Energy Well** introduces a smooth, localized attention decay. Each token \( i \) exerts an influence that follows a Gaussian distribution, governed by a decay parameter \( \alpha \), which controls the spread of attention.
 
 - **Energy Field Function**:
-  \[
-  E(x, x_i, \alpha) = \exp \left( -\alpha \| x - x_i \|^2 \right)
-  \]
+  E(x, x_i, α) = exp( -α || x - x_i ||^2 )
   where:
-  - \( E(x, x_i, \alpha) \): Energy at position \( x \) due to token \( i \).
-  - \( \alpha \): Decay parameter; higher values localize the attention spread, while lower values broaden it.
+- `E(x, x_i, α)`: Energy at position `x` due to token `i`.
+- `α`: Decay parameter; higher values localize the attention spread, while lower values broaden it.
 
 ### 2. Inverse Square Energy Well
 The **Inverse Square Well** configuration allows broader influence over distance, maintaining attention across clusters while gradually decaying based on the inverse square of the distance.
 
 - **Energy Field Function**:
-  \[
-  E(x, x_i) = \frac{w_i}{\| x - x_i \|^2 + \epsilon}
-  \]
+  E(x, x_i) = w_i / (|| x - x_i ||^2 + ε)
   where:
-  - \( w_i \): Importance weight of token \( i \).
-  - \( \epsilon \): Small constant to prevent division by zero.
+- `w_i`: Importance weight of token `i`.
+- `ε`: Small constant to prevent division by zero.
 
 ### 3. Softmax Exponential Energy Well
 This configuration introduces **softmax normalization** over distances, distributing attention based on a balance between spatial proximity and token significance.
 
 - **Energy Field Function**:
-  \[
-  E(x, x_i) = \frac{\exp(-\alpha \| x - x_i \|)}{\sum_j \exp(-\alpha \| x - x_j \|)}
-  \]
+  E(x, x_i) = exp(-α || x - x_i ||) / ∑_j exp(-α || x - x_j ||)
   The softmax normalization ensures adaptive distribution of attention across clusters based on distance.
 
 ### 4. Lorentzian Energy Well
 The **Lorentzian Well** applies a broader, slower-decaying influence, capturing long-range dependencies with a gradual decay profile, suitable for cases with inter-cluster dependencies.
 
 - **Energy Field Function**:
-  \[
-  E(x, x_i) = \frac{w_i}{1 + \alpha \| x - x_i \|^2}
-  \]
+  E(x, x_i) = w_i / (1 + α || x - x_i ||^2)
+
 
 ## 🔢 Attention Score Calculation
 
-The **attention score** between tokens \( i \) and \( j \) is computed by combining the energy gradient with the energy field value. The resulting attention matrix controls the directional influence of tokens.
+The **attention score** between tokens `i` and `j` is computed by combining the energy gradient with the energy field value. The resulting attention matrix controls the directional influence of tokens.
 
 - **Attention Score Calculation**:
-  \[
-  \text{attention matrix}(i, j) = \exp \left( -\| \text{energy gradient} \| \cdot E_{\text{field}}(i, j) \right)
-  \]
-  where:
-  - **Energy Gradient**: Calculated as \( -(x_j - x_i) \), directing attention based on token distances.
+
+
+where:
+- **Energy Gradient**: Calculated as `-(x_j - x_i)`, directing attention based on token distances.
 
 ## 📊 Inter- and Intra-Cluster Dynamics
 
