@@ -1,13 +1,7 @@
 import torch
 import torch.nn as nn
-import torch.optim as optim
 import torch.nn.functional as F
-from torch.utils.data import DataLoader, random_split
-from sklearn.metrics import accuracy_score, precision_score, f1_score
-import torchvision.transforms as transforms
-import torchvision.datasets as datasets
-from transformers import BertTokenizer, BertModel
-import time
+
 
 class GaussianEnergyWellAttention(nn.Module):
     def __init__(self, embedding_dim):
