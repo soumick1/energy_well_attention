@@ -19,6 +19,8 @@ The **Gaussian Energy Well** introduces a smooth, localized attention decay. Eac
 - `E(x, x_i, α)`: Energy at position `x` due to token `i`.
 - `α`: Decay parameter; higher values localize the attention spread, while lower values broaden it.
 
+![comparative_study](./images/Energy_well.png)
+
 ### 2. Inverse Square Energy Well
 The **Inverse Square Well** configuration allows broader influence over distance, maintaining attention across clusters while gradually decaying based on the inverse square of the distance.
 
@@ -33,7 +35,7 @@ This configuration introduces **softmax normalization** over distances, distribu
 
 - **Energy Field Function**:
   E(x, x_i) = exp(-α || x - x_i ||) / ∑_j exp(-α || x - x_j ||)
-  The softmax normalization ensures adaptive distribution of attention across clusters based on distance.
+  The softmax normalization ensures the adaptive distribution of attention across clusters based on distance.
 
 ### 4. Lorentzian Energy Well
 The **Lorentzian Well** applies a broader, slower-decaying influence, capturing long-range dependencies with a gradual decay profile, suitable for cases with inter-cluster dependencies.
@@ -66,7 +68,8 @@ Our experiments across text and image datasets validate the benefits of this app
 - **Higher Accuracy**: Demonstrated improvements in classification tasks compared to conventional self-attention.
 - **Reduced Computational Cost**: Efficiency in long-sequence tasks, with limited interactions based on distance.
 
-![plot](./images/comparative_study.png)
+![loss_comparision](./images/Loss_comparison_of_attention_mechanisms.png)
+![comparative_study](./images/comparative_study.png)
 
 ## 📄 Citation
 
