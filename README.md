@@ -66,6 +66,8 @@ Our experiments across text and image datasets validate the benefits of this app
 - **Higher Accuracy**: Demonstrated improvements in classification tasks compared to conventional self-attention.
 - **Reduced Computational Cost**: Efficiency in long-sequence tasks, with limited interactions based on distance.
 
+![plot](./images/comparative_study.png)
+
 ## 📄 Citation
 
 [Preprint Paper Link](https://www.techrxiv.org/doi/full/10.36227/techrxiv.173145064.43169558/v1)
