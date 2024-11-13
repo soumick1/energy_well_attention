@@ -47,8 +47,7 @@ The **Lorentzian Well** applies a broader, slower-decaying influence, capturing 
 The **attention score** between tokens `i` and `j` is computed by combining the energy gradient with the energy field value. The resulting attention matrix controls the directional influence of tokens.
 
 - **Attention Score Calculation**:
-
-
+attention_matrix(i, j) = exp( -|| energy_gradient || * E_field(i, j) )
 where:
 - **Energy Gradient**: Calculated as `-(x_j - x_i)`, directing attention based on token distances.
 
@@ -73,11 +72,8 @@ Our experiments across text and image datasets validate the benefits of this app
 
 If you find this repository useful in your research, please cite my work as follows:
 
-```bibtex
-@article{sarker2024energywellattention,
-  title={Energy-Well Based Distance-Aware Attention Mechanism for Tunable Focus: An Alternative to Self-Attention},
-  author={Sarker, Soumick},
-  journal={TechRxiv},
-  year={2024},
-  doi={10.36227/techrxiv.173145064.43169558/v1}
-}
+
+> **Soumick Sarker. Energy-Well Based Distance-Aware Attention Mechanism for Tunable Focus: An Alternative to Self-Attention.**  
+> *TechRxiv.* November 12, 2024.  
+> DOI: [10.36227/techrxiv.173145064.43169558/v1](https://doi.org/10.36227/techrxiv.173145064.43169558/v1)
+
