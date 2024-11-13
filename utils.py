@@ -8,6 +8,7 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 from transformers import BertTokenizer, BertModel
 import time
+from models import *
 
 
 def train_and_evaluate(model, train_loader, test_loader, optimizer, criterion, device):
@@ -67,3 +68,41 @@ def get_data_loaders(dataset_name):
     test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False)
 
     return train_loader, test_loader, embedding_dim, output_dim
+
+
+def run_experiment_on_datasets(dataset_list):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    criterion = nn.CrossEntropyLoss()
+
+    results = []
+    for dataset_name in dataset_list:
+        print(f"\nRunning experiment on {dataset_name}...")
+
+        train_loader, test_loader, embedding_dim, output_dim = get_data_loaders(dataset_name)
+
+        gaussian_model = AttentionComparisonModel(embedding_dim, output_dim, method="gaussian").to(device)
+        gaussian_optimizer = optim.Adam(gaussian_model.parameters(), lr=0.01)
+        gauss_accuracy, gauss_precision, gauss_f1 = train_and_evaluate(
+            gaussian_model, train_loader, test_loader, gaussian_optimizer, criterion, device
+        )
+
+        softmax_model = AttentionComparisonModel(embedding_dim, output_dim, method="softmax_exponential").to(device)
+        softmax_optimizer = optim.Adam(softmax_model.parameters(), lr=0.01)
+        softmax_accuracy, softmax_precision, softmax_f1 = train_and_evaluate(
+            softmax_model, train_loader, test_loader, softmax_optimizer, criterion, device
+        )
+
+        multihead_model = AttentionComparisonModel(embedding_dim, output_dim, method="self_attention").to(device)
+        multihead_optimizer = optim.Adam(multihead_model.parameters(), lr=0.01)
+        multihead_accuracy, multihead_precision, multihead_f1 = train_and_evaluate(
+            multihead_model, train_loader, test_loader, multihead_optimizer, criterion, device
+        )
+
+        results.append({
+            "Dataset": dataset_name,
+            "Gaussian": {"Accuracy": gauss_accuracy, "Precision": gauss_precision, "F1 Score": gauss_f1},
+            "Softmax Exponential": {"Accuracy": softmax_accuracy, "Precision": softmax_precision, "F1 Score": softmax_f1},
+            "Self-Attention": {"Accuracy": multihead_accuracy, "Precision": multihead_precision, "F1 Score": multihead_f1},
+        })
+
+    return results
