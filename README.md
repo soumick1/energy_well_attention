@@ -69,7 +69,7 @@ Our experiments across text and image datasets validate the benefits of this app
 
 ## 📄 Citation
 
-[Paper Link](https://www.techrxiv.org/doi/full/10.36227/techrxiv.173145064.43169558/v1)
+[Preprint Paper Link](https://www.techrxiv.org/doi/full/10.36227/techrxiv.173145064.43169558/v1)
 
 If you find this repository useful in your research, please cite my work as follows:
 
