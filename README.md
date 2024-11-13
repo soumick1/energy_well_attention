@@ -67,3 +67,15 @@ Our experiments across text and image datasets validate the benefits of this app
 - **Higher Accuracy**: Demonstrated improvements in classification tasks compared to conventional self-attention.
 - **Reduced Computational Cost**: Efficiency in long-sequence tasks, with limited interactions based on distance.
 
+## 📄 Citation
+
+If you find this repository useful in your research, please cite my work as follows:
+
+```bibtex
+@article{sarker2024energywellattention,
+  title={Energy-Well Based Distance-Aware Attention Mechanism for Tunable Focus: An Alternative to Self-Attention},
+  author={Sarker, Soumick},
+  journal={TechRxiv},
+  year={2024},
+  doi={10.36227/techrxiv.173145064.43169558/v1}
+}
