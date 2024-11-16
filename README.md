@@ -77,8 +77,12 @@ Our experiments across text and image datasets validate the benefits of this app
 
 If you find this repository useful in your research, please cite my work as follows:
 
-
-> **Soumick Sarker. Energy-Well Based Distance-Aware Attention Mechanism for Tunable Focus: An Alternative to Self-Attention.**  
-> *TechRxiv.* November 12, 2024.  
-> DOI: [10.36227/techrxiv.173145064.43169558/v1](https://doi.org/10.36227/techrxiv.173145064.43169558/v1)
+```bibtex
+@article{sarker2024energy,
+  title={Energy-Well Based Distance-Aware Attention Mechanism for Tunable Focus: An Alternative to Self-Attention},
+  author={Sarker, Soumick},
+  journal={Authorea Preprints},
+  year={2024},
+  publisher={Authorea}
+}
 
