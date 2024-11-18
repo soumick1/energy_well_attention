@@ -1,3 +1,5 @@
+![Python 3.8](https://img.shields.io/badge/python-3.10-green.svg)
+
 # Energy-Well Based Distance-Aware Attention Mechanism for Tunable Focus: An Alternative to Self-Attention
 
 Welcome to the repository for **Energy-Well Based Distance-Aware Attention Mechanism for Tunable Focus**, a novel attention framework inspired by physical energy fields. This repository contains the code and implementation details for our energy-well-based approach, which enhances traditional transformer models by integrating tunable, distance-aware attention mechanisms. The methods here are designed to capture both intra-cluster and inter-cluster dependencies, improving interpretability and efficiency across diverse applications.
